@@ -40,3 +40,8 @@ Michael Kaminsky, and David G. Andersen. 2018. **Building a Bw-Tree Takes
 More Than Just Buzz Words.** In Proceedings of 2018 International Conference
 on Management of Data (SIGMOD’18). ACM, New York, NY, USA, 16 pages.
 https://doi.org/10.1145/3183713.3196895
+
+## INSTALL NOTES
+- Install papi
+- Install tbb
+- Install atomic from package manager

@@ -11,13 +11,13 @@
 #define CACHE_LINE_SIZE 64
 
 /* Define to enable debugging assertions. */
-/* #undef ENABLE_ASSERTIONS */
+#define ENABLE_ASSERTIONS 1
 
 /* Define to enable invariant assertions. */
-#define ENABLE_INVARIANTS 0
+/* #undef ENABLE_INVARIANTS */
 
 /* Define to enable precondition assertions. */
-#define ENABLE_PRECONDITIONS 0
+/* #undef ENABLE_PRECONDITIONS */
 
 /* Define to 1 if you have the `clock_gettime' function. */
 #define HAVE_CLOCK_GETTIME 1
@@ -67,7 +67,7 @@
 #define HAVE_JEMALLOC 1
 
 /* Define if you have libnuma. */
-/* #undef HAVE_LIBNUMA */
+#define HAVE_LIBNUMA 1
 
 /* Define to 1 if the system has the type `long long'. */
 #define HAVE_LONG_LONG 1
@@ -85,7 +85,7 @@
 #define HAVE_MEMORY_H 1
 
 /* Define to 1 if you have the <numa.h> header file. */
-/* #undef HAVE_NUMA_H */
+#define HAVE_NUMA_H 1
 
 /* Define if off_t and long are the same type. */
 #define HAVE_OFF_T_IS_LONG 1

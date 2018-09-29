@@ -1,6 +1,6 @@
 AR = ar
 CC = gcc
-CXX = g++ -std=gnu++0x
+CXX = g++
 CFLAGS = -g -W -Wall -O2 -fPIC
 DEPSDIR := .deps
 DEPCFLAGS = -MD -MF $(DEPSDIR)/$*.d -MP
@@ -16,7 +16,7 @@ endif
 ifneq ($(strip $(NOSUPERPAGE)), )
   CFLAGS += -DNOSUPERPAGE
 endif
-LIBS =  -lpthread -lm
+LIBS = -lnuma  -lpthread -lm
 LDFLAGS = 
 
 all: mtIndexAPI.a
@@ -63,7 +63,7 @@ configure config.h.in: configure.ac
 	touch config.h.in
 
 config.status: configure
-	./configure  'enable_memdebug=no' 'enable_assert=no' 'enable_assertions=no' 'enable_preconditions=no' 'enable_invariants=no'
+	./configure 
 
 $(DEPSDIR)/stamp:
 	mkdir -p $(DEPSDIR)
