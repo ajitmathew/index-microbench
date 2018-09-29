@@ -45,3 +45,6 @@ https://doi.org/10.1145/3183713.3196895
 - Install papi
 - Install tbb
 - Install atomic from package manager
+- Install libnuma-dev
+- Goto masstree directory and make
+- Goto pcm directory and make

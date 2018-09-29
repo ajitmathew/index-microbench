@@ -1,7 +1,7 @@
 #!/bin/bash
 
 KEY_TYPE=monoint
-for WORKLOAD_TYPE in e; do
+for WORKLOAD_TYPE in a c e; do
   echo workload${WORKLOAD_TYPE} > workload_config.inp
   echo ${KEY_TYPE} >> workload_config.inp
   python gen_workload.py workload_config.inp
@@ -10,7 +10,7 @@ for WORKLOAD_TYPE in e; do
 done
 
 KEY_TYPE=randint
-for WORKLOAD_TYPE in e; do
+for WORKLOAD_TYPE in a c e; do
   echo workload${WORKLOAD_TYPE} > workload_config.inp
   echo ${KEY_TYPE} >> workload_config.inp
   python gen_workload.py workload_config.inp
