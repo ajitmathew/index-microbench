@@ -474,7 +474,7 @@ inline void exec(int wl,
   tput = txn_num / (end_time - start_time) / 1000000; //Mops/sec
 
   std::cout << "sum = " << sum << "\n";
-  std::cout << "\033[1;31m";
+  //std::cout << "\033[1;31m";
 
   if (wl == WORKLOAD_A) {  
     std::cout << "read/update " << (tput + (sum - sum));
@@ -487,7 +487,7 @@ inline void exec(int wl,
     exit(1);
   }
 
-  std::cout << "\033[0m" << "\n";
+  std::cout << "\n";
 
   if(index_type == TYPE_SKIPLIST) {
     fprintf(stderr, "SkipList size = %lu\n", idx->GetIndexSize());

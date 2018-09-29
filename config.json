@@ -1,0 +1,10 @@
+{
+        "index_test": [
+                {
+                        "index": ["bwtree"],
+                        "workloads": ["a"],
+                        "key_type": ["rand"],
+                        "threads": [1]
+                }
+        ]
+}
