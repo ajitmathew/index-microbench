@@ -25,6 +25,19 @@ def getThroughput(wl):
         if w[0] == searchStr:
             return w[1]
 
+def plotgraph(plot_data, workload, key_type, threads, final_dir):
+    fig = plt.figure()
+    title = workload + '_' + key_type
+    fig.suptitle(title)
+    ax = fig.add_subplot(111)
+    for keys in plot_data:
+        ax.plot(threads, plot_data[keys], marker='o', linestyle='-', label = keys)
+    ax.set_xlabel('threads')
+    ax.set_ylabel('Mops/s')
+    ax.legend(loc = 'upper left')
+    fig.savefig(final_dir + title + '.png')
+
+
 ###################
 
 parser = optparse.OptionParser()
@@ -42,7 +55,7 @@ result_dir = "./resutls/" + opts.dest + "/"
 try:
     os.stat(result_dir)
 except:
-    os.makedirs(rsuult_dir)
+    os.makedirs(result_dir)
 
 ## Make binary
 if opts.plot == False:
@@ -62,9 +75,11 @@ for test in json_data:
     except:
         os.makedirs(final_dir)
     
-    for index in data["index"]:
-        for workload in data["workloads"]:
-            for key_type in data["key_type"]:
+    for workload in data["workloads"]:
+        for key_type in data["key_type"]:
+            plot_data = {}
+            for index in data["index"]:
+                plot_data[index] = []
                 log = final_dir + index + "_" + workload + "_" + key_type
                 log_file = open(log, "w+")
                 
@@ -77,5 +92,10 @@ for test in json_data:
                     print thp
                     os.system("rm -rf tmp")
                     log_file.write(str(threads) + " " + thp)
+                    plot_data[index].append(float(thp))
                 
                 log_file.close()
+            
+            plotgraph(plot_data, workload, key_type, data["threads"], final_dir)
+
+

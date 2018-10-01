@@ -1,9 +1,9 @@
 {
         "index_test": [
                 {
-                        "index": ["bwtree"],
-                        "workloads": ["a"],
-                        "key_type": ["rand"],
+                        "index": ["bwtree","skiplist"],
+                        "workloads": ["a", "e"],
+                        "key_type": ["rand", "mono"],
                         "threads": [1]
                 }
         ]
