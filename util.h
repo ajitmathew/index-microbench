@@ -2,6 +2,7 @@
 #include "indexkey.h"
 #include "microbench.h"
 #include "index.h"
+#include "numa_config.h"
 
 #ifndef _UTIL_H
 #define _UTIL_H
@@ -94,27 +95,19 @@ static int core_alloc_map_hyper[] = {
 };
 
 
-static int core_alloc_map_numa[] = {
-  0, 2, 4, 6, 8, 10, 12, 14, 16, 18,
-  1, 3, 5, 7 ,9, 11, 13, 15, 17, 19,
-  20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
-  21, 23, 25, 27, 29, 31, 33, 35, 37, 39,  
-};
-
-
-constexpr static size_t MAX_CORE_NUM = 40;
+constexpr static size_t MAX_CORE_NUM = 448;
 
 inline void PinToCore(size_t thread_id) {
   cpu_set_t cpu_set;
   CPU_ZERO(&cpu_set);
 
-  size_t core_id = thread_id % MAX_CORE_NUM;
+  int socket = thread_id / NUM_PHYSICAL_CPU_PER_SOCKET;
+  int physical_cpu = thread_id % NUM_PHYSICAL_CPU_PER_SOCKET;
+  int smt = 0;
+  if(thread_id > MAX_CORE_NUM/2)
+          smt = 1;
 
-  if(hyperthreading == true) {
-    CPU_SET(core_alloc_map_hyper[core_id], &cpu_set);
-  } else {
-    CPU_SET(core_alloc_map_numa[core_id], &cpu_set);
-  }
+  CPU_SET(OS_CPU_ID[socket][physical_cpu][smt], &cpu_set);
 
   int ret = pthread_setaffinity_np(pthread_self(), sizeof(cpu_set), &cpu_set);
   if(ret != 0) {

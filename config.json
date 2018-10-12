@@ -1,10 +1,11 @@
 {
-        "index_test": [
+        "index": [
                 {
-                        "index": ["bwtree","skiplist"],
-                        "workloads": ["a", "e"],
+
+                        "index": ["btreeolc","bwtree","skiplist","masstree"],
+                        "workloads": ["a","e","c"],
                         "key_type": ["rand", "mono"],
-                        "threads": [1]
+                        "threads": [1, 2, 4, 8, 16, 32, 64, 128, 192,200]
                 }
         ]
 }
