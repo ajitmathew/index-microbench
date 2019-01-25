@@ -626,7 +626,7 @@ int main(int argc, char *argv[]) {
   
   // Then read number of threads using command line
   int num_thread = atoi(argv[4]);
-  if(num_thread < 1 || num_thread > 40) {
+  if(num_thread < 1 || num_thread > 200) {
     fprintf(stderr, "Do not support %d threads\n", num_thread);
     exit(1);
   } else {

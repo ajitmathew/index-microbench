@@ -23,7 +23,7 @@
 #   Request distribution: zipfian
 
 fieldcount=1
-recordcount=50000000
+recordcount=50000
 operationcount=10000000
 fieldlength=1
 
